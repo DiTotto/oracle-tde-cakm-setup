@@ -29,10 +29,7 @@ CAKM_PACKAGE="610-000825-007_cakm_for_oracle_tde_linux_64b_v${CAKM_VERSION}.tar.
 CAKM_PACKAGE_DIR="/tmp"                    # Directory dove si trova il pacchetto
 
 # --- Certificati (path locali sul server, dopo il trasferimento) ---
-CERT_KEY_PASSPHRASE=""                     # lasciare vuoto se la chiave non è cifrata
-
-# --- Sorgente certificati (dove devono essere stati copiati sul server prima di lanciare lo script) ---
-CERTS_SOURCE_DIR="/tmp/cakm_certs"         
+CERT_KEY_PASSPHRASE=""                     # lasciare vuoto se la chiave non è cifrata     
 
 # --- Oracle ---
 ORACLE_USER="oracle"
@@ -385,23 +382,6 @@ if esegui_modulo 1; then
     separator "MODULO 1 — Verifica prerequisiti"
     ERRORI=0
 
-    # Verifica presenza pacchetto CAKM
-    # if [[ -f "${CAKM_PACKAGE_DIR}/${CAKM_PACKAGE}" ]]; then
-    #     log_ok "Pacchetto CAKM trovato: ${CAKM_PACKAGE_DIR}/${CAKM_PACKAGE}"
-    # else
-    #     log_error "Pacchetto CAKM non trovato in: ${CAKM_PACKAGE_DIR}/${CAKM_PACKAGE}"
-    #     ((ERRORI++))
-    # fi
-
-    # # Verifica presenza certificati sorgente
-    # for cert_file in "RootCA.pem" "single_instance.pem" "single_instance_key.pem"; do
-    #     if [[ -f "${CERTS_SOURCE_DIR}/${cert_file}" ]]; then
-    #         log_ok "Certificato trovato: ${cert_file}"
-    #     else
-    #         log_error "Certificato mancante: ${CERTS_SOURCE_DIR}/${cert_file}"
-    #         ((ERRORI++))
-    #     fi
-    # done
 
     # Verifica step 1.1 — Installazione CAKM
     CAKM_INSTALL_DIR="/opt/CipherTrust/CAKM_for_Oracle_TDE"
